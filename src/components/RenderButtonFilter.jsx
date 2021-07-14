@@ -8,16 +8,12 @@ import AppLocacaoContext from '../context/AppLocacaoContext';
 export default function RenderButtonFilter({ categories: { children_categories = [] } }) {
   const { setImoveis } = useContext(AppLocacaoContext);
   
-  // useEffect(() => {
-    const filterCategory = async ({ target }) => {
-      const { children_categories } = await requestType(target.name);
-      const { id } = children_categories.filter(({ name }) => name === "Aluguel")[0];
-      const request = await requestApiImovel(id);
-      setInterval(setImoveis(request.results), 3000);
-    }
-    // filterCategory();
-  // });
-
+  const filterCategory = async ({ target }) => {
+    const { children_categories } = await requestType(target.name);
+    const { id } = children_categories.filter(({ name }) => name === "Aluguel")[0];
+    const request = await requestApiImovel(id);
+    setInterval(setImoveis(request.results), 3000);
+  }
 
   return (
       <section>

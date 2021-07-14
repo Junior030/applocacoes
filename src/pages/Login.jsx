@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppLocacaoContext from '../context/AppLocacaoContext';
+import Logo from '../img/Logo.png'
 
 function Login() {
   const { setUser } = useContext(AppLocacaoContext);
@@ -37,15 +38,18 @@ function Login() {
   };
 
   return (
-    <section>
-      <form>
+    <section className="sectionLogin">
+      <header className="headerLogin">
+        <img src={Logo} alt="Logo" />
+      </header>
+      <form className="formLogin">
+        <h3>Reinvente seu jeito de morar</h3>
+        <h4>Alugue seu imóvel sem drama</h4>
         <label htmlFor="email">
-          Email:
-          <input type="email" id="email" onChange={ handleChange } />
+          <input type="email" id="email" placeholder="Email" onChange={ handleChange } />
         </label>
         <label htmlFor="senha">
-          Senha:
-          <input type="password" id="senha" onChange={ handleChange } />
+          <input type="password" id="senha" placeholder="Senha" onChange={ handleChange } />
         </label>
         <button
           type="submit"
