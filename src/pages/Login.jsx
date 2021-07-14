@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import AppLocacaoContext from '../context/AppLocacaoContext';
 
 function Login() {
   const { setUser } = useContext(AppLocacaoContext);
   const [login, setLogin] = useState({});
   const [disableBtn, setDisableBtn] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     validateFields(login);
@@ -31,6 +33,7 @@ function Login() {
   const handleClick = (event) => {
     event.preventDefault();
     setUser(login);
+    history.push('/imoveis');
   };
 
   return (
@@ -46,8 +49,8 @@ function Login() {
         </label>
         <button
           type="submit"
-          disabled={ disableBtn }
           onClick={ handleClick }
+          disabled={ disableBtn }
         >
           Login
         </button>
