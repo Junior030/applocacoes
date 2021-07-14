@@ -1,22 +1,22 @@
 import React, { useEffect, useContext } from 'react';
-import requestApi from '../services/requestApi';
+import { requestApiCategories } from '../services/requestApi';
 import AppLocacaoContext from '../context/AppLocacaoContext';
-import renderButtonFilter from '../components/renderButtonFilter';
+import RenderButtonFilter from '../components/RenderButtonFilter';
 
 function Imoveis() {
-  const { setImoveis, imoveis } = useContext(AppLocacaoContext);
+  const { categories, setCategories } = useContext(AppLocacaoContext);
 
   useEffect(() => {
     const response = async () => {
-      const request = await requestApi();
-      setImoveis(request);
+      const request = await requestApiCategories();
+      setCategories(request);
     };
     response();
   });
 
   return (
     <section>
-      <renderButtonFilter imoveis={ imoveis.children_categories }/>
+      <RenderButtonFilter categories={ categories }/>
     </section>
   );
 }

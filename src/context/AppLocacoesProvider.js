@@ -4,11 +4,15 @@ import AppLocacaoContext from './AppLocacaoContext';
 
 function AppLocacoesProvider({ children }) {
   const [user, setUser] = useState({});
-  const [imoveis, setImoveis] = useState({});
+  const [categories, setCategories] = useState({});
+  const [imoveis, setImoveis] = useState([]);
+
 
   const contextValue = {
     user,
     setUser,
+    categories,
+    setCategories,
     imoveis,
     setImoveis,
   }
