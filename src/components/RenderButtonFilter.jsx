@@ -1,28 +1,19 @@
 import PropTypes from 'prop-types';
-import React, {useContext} from 'react';
-import { requestApiImovel, requestType } from '../services/requestApi';
+import React, { useContext } from 'react';
 import AppLocacaoContext from '../context/AppLocacaoContext';
 
 
-
 export default function RenderButtonFilter({ categories: { children_categories = [] } }) {
-  const { setImoveis } = useContext(AppLocacaoContext);
-  
-  const filterCategory = async ({ target }) => {
-    const { children_categories } = await requestType(target.name);
-    const { id } = children_categories.filter(({ name }) => name === "Aluguel")[0];
-    const request = await requestApiImovel(id);
-    setInterval(setImoveis(request.results), 3000);
-  }
+  const { setFilterCategory } = useContext(AppLocacaoContext);
 
   return (
-      <section>
+      <section className="sectionButtonsFilter">
         {children_categories.map(({name, id}) => (
           <button
             type="button"
             name={ id }
             key={ id }
-            onClick={ filterCategory }
+            onClick={ ({ target }) => setFilterCategory(target.name) }
           >
             {name}
           </button>

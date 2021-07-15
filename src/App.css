@@ -51,20 +51,22 @@ body {
   letter-spacing: 2px;
 }
 
-.formLogin button {
+.formLogin button, .sectionButtonsFilter button {
   width: 60%;
   height: 40px;
   border: 1px solid gray;
   border-radius: 8px;
 }
 
-.formLogin button:hover {
+.formLogin button:hover, .sectionButtonsFilter button:hover {
   cursor: pointer;
   background-color: rgb(230, 230, 230);
 }
 
 /* fim login  */
 
+
+/* headers */
 .componentHeader, .headerLogin {
   width: 100%;
   display: flex;
@@ -79,3 +81,55 @@ body {
 .componentHeader img, .headerLogin img {
   width: 100px;
 }
+/* fim headers */
+
+/* inicio imoveis */
+.sectionImoveis {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sectionButtonsFilter {
+  position: fixed;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+
+.sectionButtonsFilter button {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 15px;
+}
+
+.containerCards {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  margin: 220px 0 0 200px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardImovel {
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+  margin: 5px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardImovel:hover {
+  cursor: pointer;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.233);
+}
+
+.cardImovel img {
+  width: 80%;
+}
+
+/* fim imoveis */

@@ -6,6 +6,7 @@ function AppLocacoesProvider({ children }) {
   const [user, setUser] = useState({});
   const [categories, setCategories] = useState({});
   const [imoveis, setImoveis] = useState([]);
+  const [filterCategory, setFilterCategory] = useState('MLB1459');
 
 
   const contextValue = {
@@ -15,6 +16,8 @@ function AppLocacoesProvider({ children }) {
     setCategories,
     imoveis,
     setImoveis,
+    filterCategory,
+    setFilterCategory,
   }
 
   return (
