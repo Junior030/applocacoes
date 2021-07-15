@@ -81,6 +81,17 @@ body {
 .componentHeader img, .headerLogin img {
   width: 100px;
 }
+
+.nicknameLogo {
+  align-items: center;
+  display: flex;
+}
+
+.nicknameLogo img {
+  width: 60px;
+  border-radius: 50%;
+}
+
 /* fim headers */
 
 /* inicio imoveis */

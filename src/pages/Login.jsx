@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import AppLocacaoContext from '../context/AppLocacaoContext';
 import Logo from '../img/Logo.png'
+import { setItemLocalStorage } from '../services/localStorage';
 
 function Login() {
   const { setUser } = useContext(AppLocacaoContext);
@@ -11,13 +12,13 @@ function Login() {
 
   useEffect(() => {
     validateFields(login);
+    localStorage.clear();
   }, [login]);
 
-  const validateFields = ({ email, senha = 1 }) => {
-    const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const validateFields = ({ nickname = '', senha = 1 }) => {
     const minPassword = 6;
-  
-    if ((regex.test(email)) && (senha.length >= minPassword)) {
+    const minNickname = 3;  
+    if ((nickname.length >= minNickname) && (senha.length >= minPassword)) {
       setDisableBtn(false);
     } else {
       setDisableBtn(true);
@@ -34,6 +35,7 @@ function Login() {
   const handleClick = (event) => {
     event.preventDefault();
     setUser(login);
+    setItemLocalStorage('nickname', login.nickname);
     history.push('/imoveis');
   };
 
@@ -45,8 +47,8 @@ function Login() {
       <form className="formLogin">
         <h3>Reinvente seu jeito de morar</h3>
         <h4>Alugue seu imóvel sem drama</h4>
-        <label htmlFor="email">
-          <input type="email" id="email" placeholder="Email" onChange={ handleChange } />
+        <label htmlFor="nickname">
+          <input type="text" id="nickname" placeholder="Nickname Github" onChange={ handleChange } />
         </label>
         <label htmlFor="senha">
           <input type="password" id="senha" placeholder="Senha" onChange={ handleChange } />
