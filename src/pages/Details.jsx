@@ -1,15 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AppLocacaoContext from '../context/AppLocacaoContext';
 import Header from '../components/Header';
+import { setItemLocalStorage, getItemLocalStorage } from '../services/localStorage';
+import { Link } from 'react-router-dom';
 
 function Details({ location: { state: { i } }}) {
   const { imoveis } = useContext(AppLocacaoContext);
+  useEffect(() => {
+    if(imoveis[i] !== undefined) setItemLocalStorage('imovel', imoveis[i]);
+  })
   const {
     title,
     price,
     thumbnail,
     domain_id,
-    location: {address_line, neighborhood, city, state}}=imoveis[i];
+    attributes,
+    location: {address_line, neighborhood, city, state}} = getItemLocalStorage('imovel');
   return (
     <section className="sectionImoveis">
       <Header />
@@ -20,7 +26,18 @@ function Details({ location: { state: { i } }}) {
         </h3>
         <h5>{title}</h5>
         <p>{`${address_line}, ${neighborhood.name}, ${city.name}, ${state.name}`}</p>
-        <button>Entrar em contato</button>   
+        <div className="atributosCard">
+          {attributes.map((atribute, index) => (
+            <div key={index}>
+              <span>{`${atribute.name} `}</span>
+              <span>{`${atribute.value_name} | `}</span>            
+            </div>
+          ))}
+        </div>
+        <button>Entrar em contato</button>
+        <Link to="/imoveis">
+          Voltar          
+        </Link>
       </div>
     </section>
   );

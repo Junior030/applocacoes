@@ -163,3 +163,9 @@ a {
 .cardDetails button {
   margin-top: 15px;
 }
+
+.atributosCard {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
