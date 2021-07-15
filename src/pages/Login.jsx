@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import AppLocacaoContext from '../context/AppLocacaoContext';
 import Logo from '../img/Logo.png'
 import { setItemLocalStorage } from '../services/localStorage';
