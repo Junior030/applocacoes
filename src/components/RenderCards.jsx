@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import AppLocacaoContext from '../context/AppLocacaoContext';
 import { requestApiImovel, requestType } from '../services/requestApi';
 
@@ -23,16 +24,19 @@ function RenderCards() {
         price,
         thumbnail,
         domain_id,
-        location: {address_line, neighborhood, city, state, zip_code}
-      }) => (
-        <div className="cardImovel" key={id}>
-          <img src={thumbnail} alt={domain_id} />
-          <h3>
-            {`R$ ${price}`}
-          </h3>
-          <h5>{title}</h5>
-          <p>{`${address_line}, ${neighborhood.name}, ${city.name}, ${state.name}`}</p>
-        </div>
+        location: {address_line, neighborhood, city, state}
+      }, index) => (
+        <Link key={id} className="cardImovel" to={{
+          pathname: `/imoveis/${id}`, state: { i: index} }}>
+          <div>
+            <img src={thumbnail} alt={domain_id} />
+            <h3>
+              {`R$ ${price}`}
+            </h3>
+            <h5>{title}</h5>
+            <p>{`${address_line}, ${neighborhood.name}, ${city.name}, ${state.name}`}</p>
+          </div>
+        </Link>
       ))}
     </aside>
   );
